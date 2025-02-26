@@ -39,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if(myUser != null){
             return myUser;
         }
-        //we throw this execption in case if user not found from db to avoid "UserDetailsService returned null, which is an interface contract violation" error message.Now after adding enxt line,i try to enter a credential which is not found in db, it shows bad credentials
+        //we throw this execption in case if user not found from db to avoid "UserDetailsService returned null, which is an interface contract violation" error message.Now after adding next line,i try to enter a credential which is not found in db, it shows bad credentials
         throw new UsernameNotFoundException(username.concat(" not found in repository"));
     }
 }

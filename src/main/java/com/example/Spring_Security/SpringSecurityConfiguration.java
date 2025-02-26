@@ -57,10 +57,10 @@ public class SpringSecurityConfiguration {
                         .requestMatchers("/admin").hasAuthority("ADMIN")    //these means all these apis can be accessed only by allowed authorities
                         .requestMatchers("/user").hasAuthority("USER")
                         .requestMatchers("/Spring_Security").hasAnyAuthority("ADMIN","USER")
-                        .anyRequest().permitAll())
+                        .anyRequest().permitAll()) //we literally permitted all other methods as permitAll.We didnot bother about POSTAPI authentications also,bcoz we need CSRF token,else it wont open that POST itself
                 .formLogin(withDefaults())  //this ensures that it can be opened in browser itself
-                .httpBasic(withDefaults()); //this is used when we develop with only as backend,cause in most of the cases ,frontend will be built separately and backend separately, so it shouldnot redirect to a login page as its not required in this case and could be done only with API clients like postman.So if someone hits localhost:8080/Spring_Security in postman, he will not be redirected to login instead throws 401 error unauthorised
-
+                .httpBasic(withDefaults()) //this is used when we develop with only as backend,cause in most of the cases ,frontend will be built separately and backend separately, so it shouldnot redirect to a login page as its not required in this case and could be done only with API clients like postman.So if someone hits localhost:8080/Spring_Security in postman, he will not be redirected to login instead throws 401 error unauthorised
+        .csrf(csrf-> csrf.disable());   //this is done only for testing purpose.This should be removed when our testing is done.Else other than GET methods ,for all methods it shows 403 error.This was disabled by us for testing API's which modifies resources,like POST,PUT,DELETE,PATCH API ,since these API's need csrf token for working and e cannot provide csrf token in postman each time
         return http.build();
     }
 
