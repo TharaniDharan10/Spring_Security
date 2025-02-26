@@ -10,4 +10,19 @@ public class SecurityController {
     public String springSecurity(){
         return "Spring Security";
     }
+
+    @GetMapping("/home")
+    public String home(){
+        return "home";
+    }
+
+    @GetMapping("/user")
+    public String user(){
+        return "user";
+    }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
 }
