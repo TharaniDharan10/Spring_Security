@@ -27,6 +27,7 @@ public class SpringSecurityConfiguration {
 //    @Bean
 //    public InMemoryUserDetailsManager userDetailsService(){ //InMemoryUserDetailsManager is used when we want to store credentials in the code itself. Its an implementation of UserDetailsService interface
 //        UserDetails user= User.builder()
+////                .roles("test")//ROLE_test
 //                .username("user")
 ////                .password("$2a$10$YL7AVBwfPbFrfvFvnwpWp.4OUmqLBM.QIzbJ4sfKsiEVVR38sRsva")   //use this if want to use inmemory security using encryption of password
 //                .password("password") //use this if want to use inmemory security using no encryption of password
